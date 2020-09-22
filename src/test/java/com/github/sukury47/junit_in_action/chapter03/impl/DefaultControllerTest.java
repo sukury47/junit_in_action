@@ -50,7 +50,7 @@ public class DefaultControllerTest {
 
     @Test(expected = RuntimeException.class)
     public void undefined_request_handler_must_throw_exception() {
-        SampleRequest request = new SampleRequest("testNotDefineda");
+        SampleRequest request = new SampleRequest("testNotDefined");
         controller.getHandler(request);
     }
 
