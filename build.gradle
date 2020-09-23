@@ -12,6 +12,7 @@ plugins {
 
     // Apply the application plugin to add support for building a CLI application.
     id 'application'
+    id 'jacoco'
 }
 
 repositories {
@@ -32,4 +33,14 @@ dependencies {
 application {
     // Define the main class for the application.
     mainClassName = 'com.github.sukury47.junit_in_action.App'
+}
+
+// report is always generated after tests run
+// test {
+//     finalizedBy jacocoTestReport 
+// }
+
+// tests are required to run before generating the report
+jacocoTestReport {
+    dependsOn test
 }
