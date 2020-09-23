@@ -1,10 +1,7 @@
 package com.github.sukury47.junit_in_action.extras;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotSame;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -32,7 +29,7 @@ public class SandboxTest {
         Set<User> users = new HashSet<>();
         users.add(aUser);
         users.add(bUser);
-        assertEquals(2, users.size());
+        assertEquals(1, users.size());
     }
 
     @Test

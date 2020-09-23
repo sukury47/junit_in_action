@@ -2,6 +2,7 @@ package com.github.sukury47.junit_in_action.chapter03.impl;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertSame;
 
 import com.github.sukury47.junit_in_action.chapter03.Request;
@@ -9,6 +10,7 @@ import com.github.sukury47.junit_in_action.chapter03.RequestHandler;
 import com.github.sukury47.junit_in_action.chapter03.Response;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class DefaultControllerTest {
@@ -20,9 +22,20 @@ public class DefaultControllerTest {
     public void instantiate() {
         controller = new DefaultController();
         request = new SampleRequest();
-        handler = new SampleHandler();
-        
+        handler = new SampleHandler();        
         controller.addHandler(request, handler);
+    }
+
+    @Test(timeout=130)
+    @Ignore(value="Ignore for now until we decide a decent time-limit")
+    public void multiple_requests_must_be_consumed_within_allowed_time() {
+        for (int i = 0; i < 1000; i++) {
+            Request request = new SampleRequest(String.valueOf(i));
+            controller.addHandler(request, handler);
+            Response response = controller.processRequest(request);
+            assertNotNull(response);
+            assertNotSame(ErrorResponse.class, response.getClass());
+        }
     }
     
     @Test
