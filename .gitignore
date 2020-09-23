@@ -5,4 +5,5 @@
 build
 
 .vscode
-bin/(main|test)
+bin/main
+bin/test
