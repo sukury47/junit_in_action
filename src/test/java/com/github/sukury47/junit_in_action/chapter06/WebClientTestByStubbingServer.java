@@ -14,8 +14,10 @@ import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.AbstractHandler;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
+@Ignore(value = "ignore it beacuse using stub server takes times")
 public class WebClientTestByStubbingServer {
     @BeforeClass
     public static void setUp() throws Exception {
